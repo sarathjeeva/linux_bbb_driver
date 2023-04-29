@@ -2,14 +2,14 @@
 
 static int __init hello_sarath(void)
 {
-	pr_info("\nHello World.\n");
+	pr_info("Hello World.\n");
 	return 0;
 }
 
 
 static  void __exit bye_sarath(void)
 {
-	pr_info("\nBye Sarath ");
+	pr_info("Bye Sarath\n");
 }
 
 
