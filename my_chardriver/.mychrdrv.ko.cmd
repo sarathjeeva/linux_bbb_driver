@@ -1,0 +1,1 @@
+cmd_/home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.ko := ld -r -m elf_x86_64 --build-id=sha1  -T scripts/module.lds -o /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.ko /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.o /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.mod.o;  true

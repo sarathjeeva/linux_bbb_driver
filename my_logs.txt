@@ -1,0 +1,55 @@
+
+
+
+
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ make host 
+make -C /lib/modules/5.19.1-051901-generic/build/ M=/home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver modules
+make[1]: Entering directory '/usr/src/linux-headers-5.19.1-051901-generic'
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: gcc (Ubuntu 11.3.0-5ubuntu1) 11.3.0
+  You are using:           gcc (Ubuntu 11.3.0-1ubuntu1~22.04) 11.3.0
+  CC [M]  /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.o
+  MODPOST /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/Module.symvers
+  CC [M]  /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.mod.o
+  LD [M]  /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.ko
+  BTF [M] /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.ko
+Skipping BTF generation for /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.ko due to unavailability of vmlinux
+make[1]: Leaving directory '/usr/src/linux-headers-5.19.1-051901-generic'
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+
+
+
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ sudo insmod mychrdrv.ko 
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ sudo dmesg 
+[11344.534480] mychr_driver_init : Device number <major>:<minor> = 509:0
+[11344.534665] mychr_driver_init : Module init was successful
+
+
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ ls /sys/class/mychrdrv_class/mychrdrv/ -l 
+total 0
+-r--r--r-- 1 root root 4096 May  3 09:20 dev
+drwxr-xr-x 2 root root    0 May  3 09:20 power
+lrwxrwxrwx 1 root root    0 May  3 09:20 subsystem -> ../../../../class/mychrdrv_class
+-rw-r--r-- 1 root root 4096 May  3 09:19 uevent
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ cat /sys/class/mychrdrv_class/mychrdrv/dev 
+509:0
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ ls /dev/mychrdrv -l
+crw------- 1 root root 509, 0 May  3 09:19 /dev/mychrdrv
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+
+
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ sudo rmmod mychrdrv 
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ sudo dmesg 
+[11344.534480] mychr_driver_init : Device number <major>:<minor> = 509:0
+[11344.534665] mychr_driver_init : Module init was successful
+[11462.835459] mychr_driver_cleanup : module unloaded
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ ls /dev/mychrdrv -l
+ls: cannot access '/dev/mychrdrv': No such file or directory
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+sarath@Sarath-LinuX:~/workspace/08_LDD/ldd/custom_drivers/my_chardriver$ 
+

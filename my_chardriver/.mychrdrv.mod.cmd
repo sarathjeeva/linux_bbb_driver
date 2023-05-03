@@ -1,0 +1,1 @@
+cmd_/home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.mod := printf '%s\n'   mychrdrv.o | awk '!x[$$0]++ { print("/home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/"$$0) }' > /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver/mychrdrv.mod
