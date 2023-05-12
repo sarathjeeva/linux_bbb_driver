@@ -1,0 +1,1 @@
+cmd_/home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver_n_devices/Module.symvers := sed 's/ko$$/o/' /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver_n_devices/modules.order | scripts/mod/modpost -m -a  -o /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver_n_devices/Module.symvers -e -i Module.symvers   -T -

@@ -1,0 +1,1 @@
+cmd_/home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver_n_devices/modules.order := {   echo /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver_n_devices/mychrdrv.ko; :; } | awk '!x[$$0]++' - > /home/sarath/workspace/08_LDD/ldd/custom_drivers/my_chardriver_n_devices/modules.order
